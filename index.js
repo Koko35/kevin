@@ -12,7 +12,6 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs')
 const connection = mysql.createConnection({
 	host: 'mysql.rackhost.hu',
-	port: '3306',
 	user: 'c13121teszt',
 	password: 'vase2f-Btm',
 	database: 'c13121teszt'
