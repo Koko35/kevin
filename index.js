@@ -11,16 +11,17 @@ app.use(
 app.use(express.static('public'));
 app.set('view engine', 'ejs')
 const connection = mysql.createConnection({
-	host: 'mysql.rackhost.hu',
-	user: 'c13121teszt',
-	password: 'vase2f-Btm',
-	database: 'c13121teszt'
+	host: 'remotemysql.com',
+	user: 'MS48l6LMaU',
+	port: '3306',
+	password: 'icnXeTXtT9',
+	database: 'MS48l6LMaU'
 })
 
 app.get("/", (req, res) => {
 	res.render('index')
 });
-app.get("/cars", (req,res) => {
+app.get("/cars", (req, res) => {
 	connection.query(`SELECT * FROM cars`, (error, rows) => {
 		if (error) throw error;
 		if (!error) {
@@ -40,12 +41,12 @@ app.get("/cars/:type", (req, res) => {
 		})
 	}
 });
-app.get("/pizza", (req,res) => {
+app.get("/pizza", (req, res) => {
 	connection.query(`SELECT * FROM pizza`, (error, rows) => {
 		if (error) throw error;
 		if (!error) {
 			connection.query('SELECT * FROM ingredients', (err, items) => {
-				res.render('pizza/index', { pizza: rows ,ingredient:items})
+				res.render('pizza/index', { pizza: rows, ingredient: items })
 			})
 			//console.log(rows)
 		}
