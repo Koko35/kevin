@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header class="fixed-top">
+		<div class="container py-4">
+			<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex">
+					<a class="logo" href="/">Kevin Pizzazó &<br> Autókereskedés</a>
+				</div>
+
+				<div class="d-flex">
+					<a href="/" class="mx-2">Főoldal</a>
+					<a href="/pizza" class="mx-2">Pizza</a>
+					<a href="/cars" class="mx-2">Autók</a>
+				</div>
+
+			</div>
+		</div>
+	</header>
+	<main>
+		<section class="cover d-flex align-items-center justify-content-center">
+			<h1 class="text-center">Nézz szét használtautó <br> kínálatunk közt!</h1>
+		</section>
+		<section class="chooser container my-5 py-5">
+			<h2 class="text-center py-3">Szűrés kategóriák alapján:</h2>
+			<div class="mx-auto box">
+
+				<div class="row  py-4">
+					<div class="col-3">
+						<a href="/cars/diesel"
+							class="inner p-5 d-flex flex-column align-items-center justify-content-center">
+							<div class="icon">
+								<img src="/art/icons/petrol.png" alt="">
+							</div>
+							<div class="mt-3">
+								<p>Benzines</p>
+							</div>
+						</a>
+					</div>
+					<div class="col-3">
+						<a href="/cars/petrol"
+							class="inner p-5 d-flex flex-column align-items-center justify-content-center">
+							<div class="icon">
+								<img src="/art/icons/fuel.png" alt="">
+							</div>
+							<div class="mt-3">
+								<p>Dízel</p>
+							</div>
+						</a>
+					</div>
+					<div class="col-3">
+						<a href="/cars/electric"
+							class="inner p-5 d-flex flex-column align-items-center justify-content-center">
+							<div class="icon">
+								<img src="/art/icons/electric.png" alt="">
+							</div>
+							<div class="mt-3">
+								<p>Elektromos</p>
+							</div>
+						</a>
+					</div>
+					<div class="col-3">
+						<a href="/cars" class="inner p-5 d-flex flex-column align-items-center justify-content-center">
+							<div class="icon">
+								<img src="/art/icons/sedan.png" alt="">
+							</div>
+							<div class="mt-3">
+								<p>Mind</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="results mb-5">
+			<div class="container">
+				<div>
+					<h3 class="text-start py-3">Keresési eredmény:</h3>
+				</div>
+				<div class="row g-4">
+					<% cars.forEach(function(car) { %>
+						<div class="col-3">
+							<div class="inner">
+								<div class="image">
+									<img src="/art/cars/<%= car.ImageURL %>" alt="">
+								</div>
+								<div class="p-3">
+									<div>
+										<h5>
+											<%= car.Name %>
+										</h5>
+									</div>
+									<div class="price">
+										<p>
+											<%= car.Price %>
+										</p>
+									</div>
+									<div>
+										<%= car.Description %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% }); %>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

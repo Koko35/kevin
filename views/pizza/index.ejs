@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header class="fixed-top">
+		<div class="container py-4">
+			<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex">
+					<a class="logo" href="/">Kevin Pizzazó &<br> Autókereskedés</a>
+				</div>
+
+				<div class="d-flex">
+					<a href="/" class="mx-2">Főoldal</a>
+					<a href="/pizza" class="mx-2">Pizza</a>
+					<a href="/cars" class="mx-2">Autók</a>
+				</div>
+
+			</div>
+		</div>
+	</header>
+	<main>
+		<section class="cover-2 d-flex flex-column align-items-center justify-content-center">
+			<h1 class="text-center">Rendelj frissen sült<br>pizzáink közül!</h1><br>
+			<h4 class="">Tel: +36 38 322 8333 | Cím: Kevin Pizzázó</h4>
+		</section>
+
+		<section class="results my-5">
+			<div class="container">
+				<div>
+					<h3 class="text-start py-3">Jelenleg elérhető pizzák:</h3>
+				</div>
+				<div class="row g-4">
+					<div class="col-3">
+						<div class="inner">
+							<div class="image">
+								<img src="/art/pizza.jpg" alt="">
+							</div>
+							<div class="p-3">
+								<div>
+									<h5>
+										<strong>Kívánság pizza</strong>
+									</h5>
+								</div>
+								<div class="price">
+									<p>
+										2300 Ft
+									</p>
+								</div>
+								<div class="mt-3">
+									<p class="mb-0">Méret:</p>
+									<select class="form-control form-select" name="" id="">
+										<option value="32">32 cm</option>
+										<option value="50">50 cm</option>
+									</select>
+								</div>
+								<div class="mt-3">
+									<p class="mb-0">1. Feltét:</p>
+									<div class="d-flex">
+										<select class="form-control form-select" name="" id="customItems">
+											<% ingredient.forEach(function(item) { %>
+												<option value="">
+													<%= item.Name %>
+												</option>
+												<% }); %>
+										</select>
+									</div>
+								</div>
+								<div class="mt-3">
+									<p class="mb-0">2. Feltét:</p>
+									<div class="d-flex">
+										<select class="form-control form-select" name="" id="customItems">
+											<% ingredient.forEach(function(item) { %>
+												<option value="">
+													<%= item.Name %>
+												</option>
+												<% }); %>
+										</select>
+									</div>
+								</div>
+								<div class="d-flex justify-content-center mt-3">
+									<button type="button" class="btn btn-primary order-btn">Rendelés</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% pizza.forEach(function(item) { %>
+						<div class="col-3">
+							<div class="inner h-100 position-relative">
+								<div class="image">
+									<img src="/art/pizza.jpg" alt="">
+								</div>
+								<div class="p-3 d-flex flex-column align-items-stretch h-100">
+									<div>
+										<div>
+											<h5>
+											 <strong><%= item.Name %></strong>
+
+											</h5>
+										</div>
+										<div class="price">
+											<p>
+												<%= item.Price %> Ft
+											</p>
+										</div>
+										<div><strong>Feltét:</strong><br>
+											<%= item.Ingredients %>
+										</div>
+									</div>
+									<div class="order d-flex justify-content-center mt-3">
+										<button type="button" class="btn btn-primary order-btn">Rendelés</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<% }); %>
+				</div>
+			</div>
+		</section>
+		<div class="toast" id="myToast">
+			<div class="toast-header">
+				<strong class="me-auto"><i class="bi-gift-fill"></i>Sikeres rendelés!</strong>
+				<small>Most</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+			</div>
+			<div class="toast-body">
+				Köszönjük a rendelést, rövidesen nekilátunk a rendelést elkészítésének!
+			</div>
+		</div>
+	</main>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+	crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".order-btn").click(function () {
+			$("#myToast").toast("show");
+		});
+	});
+</script>
+
+</html>
